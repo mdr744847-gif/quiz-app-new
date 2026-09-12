@@ -1,0 +1,15 @@
+workflows:
+  default-workflow:
+    name: Default Workflow
+    instance_type: mac_mini_m1
+    environment:
+      flutter: stable
+    scripts:
+      - name: Install dependencies
+        script: |
+          flutter packages get
+      - name: Build Android AppBundle
+        script: |
+          flutter build appbundle --debug
+    artifacts:
+      - build/app/outputs/bundle/debug/*.aab
